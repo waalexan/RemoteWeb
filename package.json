@@ -4,6 +4,9 @@
     "socket.io-client": "^4.8.1"
   },
   "scripts": {
-    "build": "pkg app.js --targets node18-linux-x64"
+    "build": "pkg app.js --targets node18-linux-x64 node18-win-x64 node18-macos-x64",
+    "windows": "pkg app.js --targets node18-win-x64",
+    "linux": "pkg app.js --targets node18-linux-x64",
+    "mac": "pkg app.js --targets node18-macos-x64"
   }
 }

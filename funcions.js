@@ -8,7 +8,8 @@ const system = os.type();
 const user = os.userInfo().username;
 const platform = os.platform();
 const version = os.release();
-const USER_PWD = process.env.HOME;
+// const USER_PWD = process.env.HOME;
+const USER_PWD = process.env.HOMEPATH || process.env.USERPROFILE;
 const file = '.ctrl_remote';
 if (!file) {
     throw new Error('File name cannot be empty');
