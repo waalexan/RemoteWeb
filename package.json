@@ -7,6 +7,7 @@
     "start": "node server/main.js",
     "desktop": "node desktop/app.js",
     "react": "webpack --mode development -w",
+    "react-build": "webpack --mode development",
     "dev": "concurrently \"npm run react\" \"nodemon server/main.js\"",
     "build": "pkg desktop/app.js --targets node18-linux-x64 node18-win-x64 node18-macos-x64",
     "windows": "pkg desktop/app.js --targets node18-win-x64",
