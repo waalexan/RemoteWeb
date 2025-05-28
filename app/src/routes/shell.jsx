@@ -3,8 +3,8 @@ import Terminal from '../../components/web-terminal';
 
 export const Shell = () => {
     return (
-        <h1>
+        <div className="h-screen">
             <Terminal />
-        </h1>
+        </div>
     )
 };

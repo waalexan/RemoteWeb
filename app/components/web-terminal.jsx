@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
-export default function Terminal() {
+export default function Terminal(className) {
+  const navigate = useNavigate()
   const [history, setHistory] = useState([
     {
       command: "welcome",
@@ -174,20 +176,28 @@ export default function Terminal() {
   }, []);
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4">
-      <div className="bg-gray-900 border border-gray-700 overflow-hidden rounded">
-        <div className="bg-gray-800 px-4 py-2 flex items-center gap-2 border-b border-gray-700">
+    <div className={`w-full h-full mx-auto p-4 ${className}`}>
+      <div className="bg-gray-900 border h-full border-gray-700 overflow-hidden rounded">
+        <div className="bg-gray-800 px-4 py-2 flex items-center justify-between gap-2 border-b border-gray-700">
+          <div className="flex items-center">
           <div className="flex gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
           <div className="text-gray-300 text-sm ml-4">Terminal Web</div>
+          </div>
+
+          <div className="flex gap-2">
+            <div className=" bg-red-500" onClick={() => navigate(("/editor"))}> 
+              Editor
+            </div>
+          </div>
         </div>
 
         <div
           ref={terminalRef}
-          className="bg-gray-900 text-green-400 font-mono text-sm p-4 h-96 overflow-y-auto"
+          className="bg-gray-900 text-green-400 font-mono text-sm p-4 h-full overflow-y-auto"
           onClick={() => inputRef.current?.focus()}
         >
           {history.map((entry, index) => (
@@ -196,7 +206,7 @@ export default function Terminal() {
                 <div className="flex">
                   <span className="text-purple-400">{currentPath}</span>
                   <span className="text-white">:</span>
-                  <span className="text-blue-400">{platform}@</span>
+                  <span className="text-blue-400">{platform}</span>
                   <span className="text-white">$ </span>
                   <span className="text-green-400 ml-2">{entry.command}</span>
                 </div>
@@ -210,7 +220,7 @@ export default function Terminal() {
           <div className="flex items-center">
             <span className="text-purple-400">{currentPath}</span>
             <span className="text-white">:</span>
-            <span className="text-blue-400">{platform}@</span>
+            <span className="text-blue-400">{platform}</span>
             <span className="text-white">$ </span>
             <input
               ref={inputRef}
