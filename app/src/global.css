@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-bg: #ffffff;
+        --primary-color: #f90909;
+        --segundary-color: #990404;
+        --color-bg-2: #f9f9f9;
+        --color-text: #222121;
+        --border-line: #e9e6e6;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --color-bg: #222121;
+            --color-bg-2: #494848;
+            --color-text: #ccc5c5;
+            --border-line: #323131;
+        }
+    }
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    user-select: none;
+}
+
+/* Pode colocar no seu global.css */
+#nprogress {
+    pointer-events: none;
+}
+
+#nprogress .bar {
+    background: var(--primary-color);
+
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+}
+
+/* Define o tamanho do scrollbar */
+::-webkit-scrollbar {
+    width: 4px;
+    /* largura para scroll vertical */
+    height: 12px;
+    /* altura para scroll horizontal */
+}
+
+/* Define o estilo da "thumb" do scrollbar (parte que você arrasta) */
+::-webkit-scrollbar-thumb {
+    @apply bg-[var(--primary-color)];
+    /* cor do thumb */
+    border-radius: 2px;
+    /* bordas arredondadas */
+}
+
+/* Define o estilo da "thumb" quando está sendo clicada */
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-[var(--segundary-color)];
+    /* cor quando o thumb está sendo pressionado */
+}
+
+/* Define o estilo da linha do scrollbar (track) */
+::-webkit-scrollbar-track {
+    @apply bg-[var(--background)];
+    /* cor do fundo do track */
+    border-radius: 10px;
+    /* bordas arredondadas */
+}
